@@ -18,18 +18,20 @@ const Countries = () => (
     <Query query={gql`
        {
         countries {
-           name
+            currency
+            name
+            native
          }
         }
     `}>
         {/* sth like in REST - handle loading, handle error and if success access to data */}
         {({loading, error, data}) => {
-          if (loading) return <p>Load</p>
+          if (loading) return <p>Loading data</p>
           if (error) return <p>Ups, Error</p>
           return (
               <React.Fragment>
                  {data.countries.map(country => (
-                    <div>{country.name}</div>
+                    <div key={country.name}>{country.name} - {country.native} - {country.currency}</div>
                  ))}
              </React.Fragment>
           );
