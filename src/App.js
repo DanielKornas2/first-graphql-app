@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import ApolloClient from 'apollo-boost';
+import ReactDOM from 'react-dom';
+import gql from 'graphql-tag';
+import {Query} from 'react-apollo';
+
 import './App.css';
+
+// endpoint - in graphql there is only 1 endpoint instead of multiple in REST API
+const client = new ApolloClient({
+  uri: 'https://countries.trevorblades.com',
+})
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        
       </div>
     );
   }
