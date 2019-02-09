@@ -1,0 +1,11 @@
+section {
+    display: flex;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+    flex-wrap: wrap;
+    font-size:10px;
+}

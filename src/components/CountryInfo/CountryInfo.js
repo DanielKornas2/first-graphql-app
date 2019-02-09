@@ -6,9 +6,11 @@ import { connect } from "react-redux";
 
 // in props I have access to redux store, because i use mapstatetoprops
 const CountryInfo = (props) => (
-    <div>
-        {props.differentName.countryName}
-    </div>
+    <ul>
+        <li>Name: {props.differentName.countryName}</li>
+        <li>Native name: {props.differentName.countryNative}</li>
+        <li>Currency: {props.differentName.countryCurrency}</li>
+    </ul>
 )
 
 

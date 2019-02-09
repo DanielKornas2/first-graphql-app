@@ -1,9 +1,14 @@
 import React from 'react';
 
+import './Countries.css';
+
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
+
+import { Link } from 'react-router-dom';
+
 
 import { connect } from "react-redux";
 
@@ -16,6 +21,7 @@ const client = new ApolloClient({
 })
 
 const Countries = (props) => (
+   <section>
     <ApolloProvider client={client}>
 
     {/* GraphQL query - data from endpoint  */}
@@ -33,17 +39,28 @@ const Countries = (props) => (
           if (loading) return <p>Loading data</p>
           if (error) return <p>Ups, Error</p>
           return (
+              
               <ul>
-                 <li onClick={ () =>  props.updateCountry({country: "test"}) }>Redux</li>
                  {data.countries.map(country => (
-                    <li key={country.name} onClick={ () =>  props.updateCountry({countryName: country.name, countryNative: country.native, countryCurrency: country.currency}) }>{country.name}</li>
+                    <li key={country.name} onClick={ () =>  props.updateCountry({countryName: country.name, countryNative: country.native, countryCurrency: country.currency}) }><Link to={`/country-info?${country.name}`}>{country.name}</Link></li>
                  ))}
              </ul>
+            
           );
         }}
     </Query>
     </ApolloProvider>
+
+   
+ </section>
 )
+
+const mapStateToProps = state => {
+    return {
+        myStore: state.myStore
+    };
+};
+
 
 // my action creator there: 
 const mapDispatchToProps = { updateCountry };
@@ -51,8 +68,8 @@ const mapDispatchToProps = { updateCountry };
 
 // in App i use <CountriesContainer /> instead of <Countries /> 
 const CountriesContainer = connect(
-    // normally there is mapStateToProps but i change it to null - because in this component I don't read any redux state, i just only update it
-    null,
+    //if in component i won't use mapStateToProps i can replace it below by null
+    mapStateToProps,
     mapDispatchToProps
 )(Countries);
   

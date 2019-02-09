@@ -1,4 +1,8 @@
-.App {
+nav {
+  text-align: center;
+}
+
+.container {
   display: flex;
 }
 
