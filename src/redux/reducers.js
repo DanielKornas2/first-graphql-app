@@ -1,16 +1,14 @@
 import { combineReducers } from "redux";
 
-export const country = (state = [], action) => { 
+export const myStore = (state = {}, action) => { 
     switch (action.type) { 
       case 'COUNTRY_UPDATE':
-        return [
-           action.country
-        ]
+        return action.myStore;
       default:
-        return state
+        return state;
     }
-  }
+  };
 
   export default combineReducers({
-    country
+    myStore
   });

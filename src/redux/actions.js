@@ -1,4 +1,4 @@
-export const updateCountry = (info) => ({
+export const updateCountry = (myStore) => ({
     type: 'COUNTRY_UPDATE',
-    info
+    myStore
 });

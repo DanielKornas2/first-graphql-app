@@ -4,30 +4,18 @@ import CountryInfo from './components/CountryInfo/CountryInfo';
 import './App.css';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
+import { connect } from "react-redux";
+
 class App extends Component {
-
-  state = {
-    countryName: null,
-    countryNative: null,
-    countryCurrency: null
-  }
-
-  handleClick = (countryName, countryNative, countryCurrency) => {
-    this.setState({
-      countryName: countryName,
-      countryNative: countryNative,
-      countryCurrency: countryCurrency
-    })
-  }
 
   render() {
     return (
       <div className="App">
-        <CountriesContainer handleClick={this.handleClick} />
+       
           <Router>
             <React.Fragment>
-              {/* <Route path="/" exact component={Homepage} /> */}
-              {this.state.countryName && <button><Link to="/country-info">Show more information about {this.state.countryName}></Link></button>}
+              <Route path="/" exact component={CountriesContainer} />
+              {this.props.myStore.countryName && <button><Link to="/country-info">Show more information about {this.props.myStore.countryName}</Link></button>}
               <Route path="/country-info" component={CountryInfo} />
             </React.Fragment>
           </Router>
@@ -36,4 +24,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+      myStore: state.myStore
+  };
+};
+
+
+export default connect(mapStateToProps)(App);

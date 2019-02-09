@@ -36,7 +36,7 @@ const Countries = (props) => (
               <ul>
                  <li onClick={ () =>  props.updateCountry({country: "test"}) }>Redux</li>
                  {data.countries.map(country => (
-                    <li key={country.name} onClick={ () => props.handleClick(country.name, country.native, country.currency) }>{country.name}</li>
+                    <li key={country.name} onClick={ () =>  props.updateCountry({countryName: country.name, countryNative: country.native, countryCurrency: country.currency}) }>{country.name}</li>
                  ))}
              </ul>
           );
@@ -45,21 +45,14 @@ const Countries = (props) => (
     </ApolloProvider>
 )
 
-// contacts - i only need this property from state
-const mapStateToProps = (state) => {
-    return {
-        country: state.country
-    }
-};
-
 // my action creator there: 
 const mapDispatchToProps = { updateCountry };
 
 
-// in App i use <CountriesContainer /> instead of <Countries />
-
+// in App i use <CountriesContainer /> instead of <Countries /> 
 const CountriesContainer = connect(
-    mapStateToProps,
+    // normally there is mapStateToProps but i change it to null - because in this component I don't read any redux state, i just only update it
+    null,
     mapDispatchToProps
 )(Countries);
   
