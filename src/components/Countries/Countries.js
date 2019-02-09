@@ -5,6 +5,10 @@ import { ApolloProvider } from 'react-apollo';
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 
+import { connect } from "react-redux";
+
+// i use redux in this file so i have to import my action
+import { updateCountry } from "../../redux/actions";
 
 // endpoint - in graphql there is only 1 endpoint instead of multiple in REST API
 const client = new ApolloClient({
@@ -30,6 +34,7 @@ const Countries = (props) => (
           if (error) return <p>Ups, Error</p>
           return (
               <ul>
+                 <li onClick={ () =>  props.updateCountry({country: "test"}) }>Redux</li>
                  {data.countries.map(country => (
                     <li key={country.name} onClick={ () => props.handleClick(country.name, country.native, country.currency) }>{country.name}</li>
                  ))}
@@ -40,4 +45,22 @@ const Countries = (props) => (
     </ApolloProvider>
 )
 
-export default Countries;
+// contacts - i only need this property from state
+const mapStateToProps = (state) => {
+    return {
+        country: state.country
+    }
+};
+
+// my action creator there: 
+const mapDispatchToProps = { updateCountry };
+
+
+// in App i use <CountriesContainer /> instead of <Countries />
+
+const CountriesContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Countries);
+  
+export default CountriesContainer;

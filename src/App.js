@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Countries from './components/Countries/Countries';
+import CountriesContainer from './components/Countries/Countries';
 import CountryInfo from './components/CountryInfo/CountryInfo';
 import './App.css';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
@@ -23,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Countries handleClick={this.handleClick} />
+        <CountriesContainer handleClick={this.handleClick} />
           <Router>
             <React.Fragment>
               {/* <Route path="/" exact component={Homepage} /> */}
