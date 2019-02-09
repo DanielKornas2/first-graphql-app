@@ -11,7 +11,7 @@ const client = new ApolloClient({
     uri: 'https://countries.trevorblades.com',
 })
 
-const Countries = () => (
+const Countries = (props) => (
     <ApolloProvider client={client}>
 
     {/* GraphQL query - data from endpoint  */}
@@ -29,11 +29,11 @@ const Countries = () => (
           if (loading) return <p>Loading data</p>
           if (error) return <p>Ups, Error</p>
           return (
-              <React.Fragment>
+              <ul>
                  {data.countries.map(country => (
-                    <div key={country.name}>{country.name} - {country.native} - {country.currency}</div>
+                    <li key={country.name} onClick={ () => props.handleClick(country.name, country.native, country.currency) }>{country.name}</li>
                  ))}
-             </React.Fragment>
+             </ul>
           );
         }}
     </Query>
