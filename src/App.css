@@ -1,16 +1,8 @@
 nav {
-  text-align: center;
+    text-align: left;
 }
 
-.container {
-  display: flex;
-}
-
-ul {
-  list-style-type: none;
-}
-
-button {
-  width: 200px;
-  height: 40px;
+nav a {
+    color: #1B998B;
+    text-decoration: none;
 }

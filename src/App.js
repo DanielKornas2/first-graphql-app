@@ -13,7 +13,6 @@ class App extends Component {
 
     return (
       <div>
-       
           <Router>
             <React.Fragment>
             <nav><Link to="/" onClick={this.handleClick}>React Router, Redux and GraphQL demo app</Link></nav>
