@@ -15,7 +15,7 @@ class App extends Component {
       <div>
           <Router>
             <React.Fragment>
-            <nav><Link to="/" onClick={this.handleClick}>React Router, Redux and GraphQL demo app</Link></nav>
+            <nav><Link to="/">React Router, Redux and GraphQL demo app</Link></nav>
             <Switch>
               <Route path="/" exact component={CountriesContainer} />
               <Route path="/country-info" component={CountryInfo} />
