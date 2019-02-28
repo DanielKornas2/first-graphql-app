@@ -1,4 +1,4 @@
-## patrycjapajak.com
+## Countries
 
 First baisc React graphQL app + redux + router
 
